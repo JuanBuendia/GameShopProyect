@@ -1,10 +1,14 @@
-import './App.css';
+import "./App.css";
+import { HashRouter, Switch, Route  } from "react-router-dom";
+import Home from "./Components/Home";
 
 function App() {
   return (
-    <div className="App">
-      AAAAAAAAAAAAAAAAAAAAAA - Si funciona
-    </div>
+    <HashRouter>
+      <Switch>
+      <Route exact path="/" component={Home}/>
+      </Switch>
+    </HashRouter>
   );
 }
 
