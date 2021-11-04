@@ -1,0 +1,16 @@
+{
+    "users":[
+        {
+            "id": 1,
+            "name": "Dahianna Cabrera",
+            "username": "dahianna",
+            "password": "827ccb0eea8a706c4c34a16891f84e7b"
+        },
+        {
+            "id": 2,
+            "name": "Juan David Buendía",
+            "username": "juan",
+            "password": "827ccb0eea8a706c4c34a16891f84e7b"
+        }
+    ]
+}
