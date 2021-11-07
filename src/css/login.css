@@ -1,0 +1,62 @@
+.page{
+    background-color: rgba(46, 46, 46, 0.8);
+}
+.card{
+    width: 550px;
+    border-radius: 3%;
+}
+
+.sidenav {
+    height: 100%;
+    background-image: url(../css/img/imglogin.jpg) ;
+    background-color: rgba(0,0,0,0.8);
+    padding-top: 90px;
+    max-width: 100%;
+    filter:brightness(0.4);
+}
+
+.main {
+    padding: 0px 0px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+}
+
+@media screen and (max-width: 450px) {
+    .login-form{
+        margin-top: 0%;
+    }
+
+    .register-form{
+        margin-top: 0%;
+    }
+}
+
+@media screen and (min-width: 768px){
+    .main{
+        margin-left: 40%; 
+    }
+
+    .sidenav{
+        width: 34%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .login-form{
+        margin-top: 0%;
+    }
+
+    .register-form{
+        margin-top: 0%;
+    }
+}
+
+
+.btn-black{
+    background-color: #000 !important;
+    color: #fff;
+}

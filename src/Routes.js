@@ -1,14 +1,16 @@
 import React from "react";
-import {HashRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Login from "./pages/login";
+import Home from "./pages/home";
 
 function Routes () {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={Login}/>
+                <Route exact path="/home" component={Home}/>
             </Switch>
-        </HashRouter>
+        </BrowserRouter>
     );
 }
 
