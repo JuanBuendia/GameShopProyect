@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -19,7 +20,10 @@ class Home extends Component{
             <>
             <h1>Menú Principal</h1>
             <br />
+            <Link to="/games">Api</Link>
+            <br />
             <button type="button" onClick={()=>this.cerrarSesion()}>Cerrar Sesión</button>
+            
             </>
         );
     }
