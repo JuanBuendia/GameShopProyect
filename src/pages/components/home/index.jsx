@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Games() {
-  const [listaJuegos,setListaJuegos]=useState([]);
+  const [listaJuegos, setListaJuegos] = useState([]);
 
   const options = {
     method: "GET",
@@ -31,7 +31,9 @@ function Games() {
   };
 
   const fetchData = () => {
-    axios.request(options).then(function (response) {        
+    axios
+      .request(options)
+      .then(function (response) {
         console.log(response.data);
         setListaJuegos(response.data);
       })
@@ -46,15 +48,32 @@ function Games() {
 
   return (
     <>
-      <div className='app'>
-            <ul>
-                {listaJuegos.map(item =>(                   
-                    <li key={item.gameID}>
-                        {item.internalName}
-                    </li>                   
-                ))}
-            </ul>
-        </div>   
+      <div className="app" class="container-fluid">
+      <div class="col-2"></div>
+      <div class="col-8">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+          
+          {listaJuegos.map((item) => (
+            <div class="col align-content-center">
+              <div class="card" style={{ width: 300, height: 300 }}>
+                <img
+                  src={item.thumb}
+                  class="card-img-top imagencita"
+                  alt=""
+                  style={{ width: "auto", height: 200 }}
+                />
+                <div class="card-body">
+                  <h5 class="card-title">{item.title}</h5>
+                  <p class="card-text">{item.steamRatingText}</p>
+                </div>
+              </div>
+            </div>
+          ))}          
+        </div>
+      </div>
+        
+        <div class="col-2"></div>
+      </div>
     </>
   );
 }
