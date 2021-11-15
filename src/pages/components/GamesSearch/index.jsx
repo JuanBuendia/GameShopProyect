@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Image, ListGroup} from "react-bootstrap";
+import { Image, ListGroup } from "react-bootstrap";
 
 function GameSearch() {
   const [listaJuegos, setListaJuegos] = useState([]);
@@ -32,17 +32,18 @@ function GameSearch() {
   });
 
   return (
-    <ListGroup as="ol" numbered>
+    <ListGroup as="ol" numbered className = "col-8">
       {listaJuegos.map((item) => (
         <ListGroup.Item
           as="li"
-          className="d-flex justify-content-between align-items-start"
+          className="d-flex justify-content-between align-items-start bg-dark text-white"
+          key={item.game_id}
         >
           <div className="ms-2 me-auto">
-            <div className="fw-bold">{item.name}</div>
-            {item.currency} {item.original_price}
+            <div className="fw-bold">{item.title}</div>
+            {item.currency} {item.search_price}
           </div>
-          <Image src={item.image_thumbnail} rounded />          
+          <Image src={item.image_thumbnail} rounded />
         </ListGroup.Item>
       ))}
     </ListGroup>
