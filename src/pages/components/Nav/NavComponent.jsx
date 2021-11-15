@@ -51,6 +51,7 @@ export default class NavComponent extends Component {
                 </Nav>
                 <Form className="d-flex">
                   <FormControl
+                  //ENLAZAR CON GAME SEARCH
                     type="search"
                     placeholder="Buscar juegos"
                     className="me-2"
