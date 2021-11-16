@@ -28,7 +28,7 @@ function GameSearch() {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   return (
     <ListGroup as="ol" numbered className = "col-8">

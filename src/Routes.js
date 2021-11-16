@@ -5,6 +5,7 @@ import Games from "./pages/components/Games";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavComponent from "./pages/components/Nav/NavComponent";
 import GameSearch from "./pages/components/GamesSearch"
+import GameDetail from "./pages/components/GameDetail"
 
 function Routes () {
     return (
@@ -14,6 +15,7 @@ function Routes () {
                 <Route exact path="/home" component={NavComponent}/>
                 <Route exact path="/games" component={Games}/>
                 <Route exact path="/gameSearch" component={GameSearch}/>
+                <Route exact path="/gameDetail" component={GameDetail}/>
             </Switch>
         </BrowserRouter>
     );

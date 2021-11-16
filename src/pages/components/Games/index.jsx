@@ -9,7 +9,8 @@ function Games() {
     method: "GET",
     url: "https://steam-store-data.p.rapidapi.com/api/featured/",
     headers: {
-      
+      "x-rapidapi-host": "steam-store-data.p.rapidapi.com",
+      "x-rapidapi-key": "f60d33d507mshe74872ebd7754f4p11e444jsn30f38184cbe3",
     },
   };
 
