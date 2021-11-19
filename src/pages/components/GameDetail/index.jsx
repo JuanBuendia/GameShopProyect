@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Col, Image, Row } from "react-bootstrap";
+import { Carousel, Col, Image, Row } from "react-bootstrap";
+import ReactPlayer from "react-player/lazy";
 
 function GameDetail() {
   const [listaJuegos, setListaJuegos] = useState([]);
@@ -10,7 +11,8 @@ function GameDetail() {
     url: "https://steam-game-search-and-details.p.rapidapi.com/game_details/search_like/game_id/",
     params: { search_value: "440"},
     headers: {
-      
+      "x-rapidapi-host": "steam-game-search-and-details.p.rapidapi.com",
+      "x-rapidapi-key": "f60d33d507mshe74872ebd7754f4p11e444jsn30f38184cbe3",
     },
   };
 
@@ -35,7 +37,7 @@ function GameDetail() {
       <div className="align-align-content-start">
         <Row>
           <Col xs={6} md={4}>
-            <Image src={item.image_highlight} fluid />
+            <Image src={item.video_poster} fluid />
           </Col>
           <Col xs={6} md={4}>
             <h2>{item.title}</h2>
@@ -43,11 +45,38 @@ function GameDetail() {
             <h4>
               {item.developer} {item.release_date}
             </h4>
+            <h6>{item.popular_tags}</h6>
           </Col>
         </Row>
       </div>
-      <div className="align-content-center">
-        {item.game_description_snippet}
+      <div className="align-content-center">        
+        <Carousel>          
+          <Carousel.Item interval={2000}>
+            <Image
+              
+              className="d-block w-100"
+              src={item.image_highlight}
+              alt="First slide"
+            />
+            <Carousel.Caption>
+              <h3>Description</h3>
+              <p>{item.game_description_snippet}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item interval={2000}>
+            <ReactPlayer
+              className="d-block w-100"
+              url={item.video_webm_hd}
+              alt="Seconds slide"
+            />
+            <Carousel.Caption>
+              <h3>Reviews</h3>
+              <p>{item.game_review_summary}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+
+
       </div>
     </div>
   ));
