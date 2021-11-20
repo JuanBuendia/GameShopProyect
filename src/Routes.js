@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavComponent from "./pages/components/Nav/NavComponent";
 import GameSearch from "./pages/components/GamesSearch"
 import GameDetail from "./pages/components/GameDetail"
+import NavComponentAd from "./pages/components/Nav/NavComponentAd";
 
 function Routes () {
     return (
@@ -13,6 +14,7 @@ function Routes () {
             <Switch>
                 <Route exact path="/" component={Login}/>
                 <Route exact path="/home" component={NavComponent}/>
+                <Route exact path="/homeAd" component={NavComponentAd}/>
                 <Route exact path="/games" component={Games}/>
                 <Route exact path="/gameSearch" component={GameSearch}/>
                 <Route exact path="/gameDetail" component={GameDetail}/>

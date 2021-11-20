@@ -10,6 +10,7 @@ const cookies = new Cookies();
 class Login extends Component {
   state = {
     form: {
+      role: "",
       username: "",
       password: "",
     },
@@ -30,6 +31,7 @@ class Login extends Component {
     await axios
       .get(baseUrl, {
         params: {
+          role: this.state.form.role,
           username: this.state.form.username,
           password: md5(this.state.form.password),
         },
@@ -40,11 +42,19 @@ class Login extends Component {
       .then((response) => {
         if (response.length > 0) {
           var respuesta = response[0];
-          cookies.set("id", respuesta.id, { path: "/" });
-          cookies.set("name", respuesta.name, { path: "/" });
-          cookies.set("username", respuesta.username, { path: "/" });
-          alert(`Bienvenido/a ${respuesta.name}`);
-          window.location.href = "home";
+          if (respuesta === "Admin") {
+            cookies.set("id", respuesta.id, { path: "/" });
+            cookies.set("name", respuesta.name, { path: "/" });
+            cookies.set("username", respuesta.username, { path: "/" });
+            alert(`Bienvenido/a ${respuesta.name}`);
+            window.location.href = "homeAd";
+          } else {
+            cookies.set("id", respuesta.id, { path: "/" });
+            cookies.set("name", respuesta.name, { path: "/" });
+            cookies.set("username", respuesta.username, { path: "/" });
+            alert(`Bienvenido/a ${respuesta.name}`);
+            window.location.href = "home";
+          }
         } else {
           alert("El usuario o la contraseña son incorrectos.");
         }
@@ -69,6 +79,15 @@ class Login extends Component {
                         <div className="card shadow-2-strong">
                           <div className="card-body p-5 text-center">
                             <h3 className="mb-5">Sign in</h3>
+
+                            <div className="form-outline mb-4">
+                              <select name="role" className="form-control form-control-lg"
+                                onChange={this.handleChange}>
+                                <option value="value1">Administrador</option>
+                                <option value="value2">Jugador</option>
+                              </select>
+                              <label className="form-label">Rol</label>
+                            </div>
 
                             <div className="form-outline mb-4">
                               <input
