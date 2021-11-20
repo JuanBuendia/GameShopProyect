@@ -24,6 +24,7 @@ class Login extends Component {
         [e.target.name]: e.target.value,
       },
     });
+    console.log(this.state.form)
   };
 
   //método para iniciar sesión
@@ -83,8 +84,8 @@ class Login extends Component {
                             <div className="form-outline mb-4">
                               <select name="role" className="form-control form-control-lg"
                                 onChange={this.handleChange}>
-                                <option value="value1">Administrador</option>
-                                <option value="value2">Jugador</option>
+                                <option value="Admin">Administrador</option>
+                                <option value="Player">Jugador</option>
                               </select>
                               <label className="form-label">Rol</label>
                             </div>

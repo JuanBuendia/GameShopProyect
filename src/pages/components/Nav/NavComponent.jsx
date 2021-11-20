@@ -40,10 +40,10 @@ export default class NavComponent extends Component {
                   navbarScroll
                 >
                   <Nav.Link as={Link} to="/gamepass">
-                    GAME PASS
+                    BIBLIOTECA
                   </Nav.Link>
                   <Nav.Link as={Link} to="/social">
-                    SOCIAL
+                    REPORTES
                   </Nav.Link>
                   <Nav.Link as={Link} to="/games">
                     STORE
@@ -57,6 +57,11 @@ export default class NavComponent extends Component {
                     className="me-2"
                     aria-label="Search"
                   />
+                  <Button
+                    variant="outline-info"
+                    className="me-2"
+                  ><i class="bi bi-search"></i>
+                  </Button>
                   <Button
                     variant="outline-warning"
                     onClick={() => this.cerrarSesion()}
