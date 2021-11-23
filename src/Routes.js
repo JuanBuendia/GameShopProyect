@@ -19,7 +19,7 @@ function Routes () {
                 <Route exact path="/new" component={NewGame}/>
                 <Route exact path="/games" component={Games}/>
                 <Route exact path="/gameSearch" component={GameSearch}/>
-                <Route exact path="/gameDetail" component={GameDetail}/>
+                <Route exact path= {"/gameDetail/:id"} component={GameDetail}/>
             </Switch>
         </BrowserRouter>
     );

@@ -10,7 +10,8 @@ function GameSearch() {
     url: "https://steam-game-search-and-details.p.rapidapi.com/game_search/search_like/title/",
     params: { search_value: "Dark" },
     headers: {
-      
+      "x-rapidapi-host": "steam-game-search-and-details.p.rapidapi.com",
+      "x-rapidapi-key": "f60d33d507mshe74872ebd7754f4p11e444jsn30f38184cbe3",
     },
   };
 
@@ -28,6 +29,7 @@ function GameSearch() {
 
   useEffect(() => {
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

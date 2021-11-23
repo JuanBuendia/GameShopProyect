@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Col, Image, Row } from "react-bootstrap";
+import { Carousel, Col, Image, Row } from "react-bootstrap";
+import ReactPlayer from "react-player";
+import { useParams } from "react-router-dom";
 
 function GameDetail() {
+  const { id } = useParams();
   const [listaJuegos, setListaJuegos] = useState([]);
 
   var options = {
     method: "GET",
     url: "https://steam-game-search-and-details.p.rapidapi.com/game_details/search_like/game_id/",
-    params: { search_value: "440"},
+    params: { search_value: `${ id }` },
     headers: {
-      
+      "x-rapidapi-host": "steam-game-search-and-details.p.rapidapi.com",
+      "x-rapidapi-key": "f60d33d507mshe74872ebd7754f4p11e444jsn30f38184cbe3",
     },
   };
 
@@ -18,6 +22,7 @@ function GameDetail() {
     axios
       .request(options)
       .then(function (response) {
+        console.log({ id });
         console.log(response.data);
         setListaJuegos(response.data);
       })
@@ -28,6 +33,7 @@ function GameDetail() {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return listaJuegos.map((item) => (
@@ -35,7 +41,7 @@ function GameDetail() {
       <div className="align-align-content-start">
         <Row>
           <Col xs={6} md={4}>
-            <Image src={item.image_highlight} fluid />
+            <Image src={item.video_poster} fluid />
           </Col>
           <Col xs={6} md={4}>
             <h2>{item.title}</h2>
@@ -43,10 +49,19 @@ function GameDetail() {
             <h4>
               {item.developer} {item.release_date}
             </h4>
+            <h6>{item.popular_tags}</h6>
           </Col>
         </Row>
       </div>
       <div className="align-content-center">
+        <Carousel>
+          <Carousel.Item interval={2000}>
+            <Image src={item.image_highlight} fluid />
+          </Carousel.Item>
+          <Carousel.Item>
+            <ReactPlayer playsInline src={item.video_webm_hd} />
+          </Carousel.Item>
+        </Carousel>
         {item.game_description_snippet}
       </div>
     </div>
