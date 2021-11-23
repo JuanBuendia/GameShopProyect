@@ -25,7 +25,7 @@ class Login extends Component {
       },
     });
     console.log(this.state.form)
-  };
+  }
 
   //método para iniciar sesión
   iniciarSesion = async () => {

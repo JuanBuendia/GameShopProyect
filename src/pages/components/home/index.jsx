@@ -29,7 +29,7 @@ function Home() {
 
   useEffect(() => {
     fetchData();
-  });
+  },[]);
   return (
     <>
       <Carousel>
