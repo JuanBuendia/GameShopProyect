@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Image, ListGroup } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
 function GameSearch() {
+  const { search } = useParams();
   const [listaJuegos, setListaJuegos] = useState([]);
 
   var options = {
     method: "GET",
     url: "https://steam-game-search-and-details.p.rapidapi.com/game_search/search_like/title/",
-    params: { search_value: "Dark" },
+    params: { search_value: `${ search }` },
     headers: {
       "x-rapidapi-host": "steam-game-search-and-details.p.rapidapi.com",
       "x-rapidapi-key": "f60d33d507mshe74872ebd7754f4p11e444jsn30f38184cbe3",
@@ -19,6 +21,7 @@ function GameSearch() {
     axios
       .request(options)
       .then(function (response) {
+        console.log({ search });
         console.log(response.data);
         setListaJuegos(response.data);
       })
