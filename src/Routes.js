@@ -8,6 +8,8 @@ import GameSearch from "./pages/components/GamesSearch"
 import GameDetail from "./pages/components/GameDetail"
 import NavComponentAd from "./pages/components/Nav/NavComponentAd";
 import NewGame from "./pages/components/NewGame";
+import NewPlayer from "./pages/components/NewPlayer";
+import Register from "./pages/components/Register";
 import Library from "./pages/components/Library";
 
 function Routes () {
@@ -17,7 +19,9 @@ function Routes () {
                 <Route exact path="/" component={Login}/>
                 <Route exact path="/home" component={NavComponent}/>
                 <Route exact path="/homeAd" component={NavComponentAd}/>
-                <Route exact path="/new" component={NewGame}/>
+                <Route exact path="/newGame" component={NewGame}/>
+                <Route exact path="/newPlayer" component={NewPlayer}/>
+                <Route exact path="/register" component={Register}/>
                 <Route exact path="/games" component={Games}/>
                 <Route exact path="/library" component={Library}/>
                 <Route exact path="/gameSearch" component={GameSearch}/>

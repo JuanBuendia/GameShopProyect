@@ -12,6 +12,7 @@ import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
 import HomeAd from "../homeAd";
 import Cookies from "universal-cookie";
 import NewGame from "../NewGame";
+import NewPlayer from "../NewPlayer";
 
 const cookies = new Cookies();
 
@@ -38,8 +39,11 @@ export default class NavComponentAd extends Component {
                   style={{ maxHeight: "100px" }}
                   navbarScroll
                 >
-                  <Nav.Link as={Link} to="/new">
+                  <Nav.Link as={Link} to="/newGame">
                     NUEVO JUEGO
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/newPlayer">
+                    NUEVO JUGADOR
                   </Nav.Link>
                   <Nav.Link as={Link} to="/games">
                     REPORTES
@@ -73,8 +77,11 @@ export default class NavComponentAd extends Component {
             <Route path="/homeAd">
               <HomeAd />
             </Route>
-            <Route path="/new">
+            <Route path="/newGame">
               <NewGame />
+            </Route>
+            <Route path="/newPlayer">
+              <NewPlayer />
             </Route>
           </Switch>
         </div>
