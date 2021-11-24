@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Button, Card, Row } from "react-bootstrap";
+import { Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function Games() {
@@ -29,30 +29,33 @@ function Games() {
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (    
-    <Row xs={1} md={2} className="g-4">
-      {listaJuegos.map((item) => (
-        <Card
-          key = {item.id}
-          className="text-center bg-dark text-white g-4"
-          style={{ width: "18rem" }}          
-        >
-          <Card.Img variant="top" src={item.large_capsule_image} />
-          <Card.Body>
-            <Card.Title>{item.name}</Card.Title>
-            <Card.Text>
-              {item.currency} {item.original_price}
-            </Card.Text>
-            <Button variant="primary">
-              <Link to={`/gameDetail/${item.id}`} className="text-white" >Ir a la página del juego</Link>
-            </Button>
-          </Card.Body>
-        </Card>
-      ))}
-    </Row>
+  return (
+    <Container>
+      <br/>
+      <Row>
+        {listaJuegos.map((item) => (
+          <Col>
+            <Card className="me-2" style={{ width: "15rem" }}>
+              <Card.Img variant="top" src={item.large_capsule_image} />
+              <Card.Body>
+                <Card.Title>{item.name}</Card.Title>
+                <Card.Text>
+                  {item.currency} {item.original_price}
+                </Card.Text>
+                <Button variant="dark ">
+                  <Link to={`/gameDetail/${item.id}`} className="text-white b">
+                    Ir a la página del juego
+                  </Link>
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 }
 

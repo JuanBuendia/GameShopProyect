@@ -13,6 +13,7 @@ import HomeAd from "../homeAd";
 import Cookies from "universal-cookie";
 import NewGame from "../NewGame";
 import NewPlayer from "../NewPlayer";
+import Reports from "../Reports";
 
 const cookies = new Cookies();
 
@@ -45,7 +46,7 @@ export default class NavComponentAd extends Component {
                   <Nav.Link as={Link} to="/newPlayer">
                     NUEVO JUGADOR
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/games">
+                  <Nav.Link as={Link} to="/reports">
                     REPORTES
                   </Nav.Link>
                 </Nav>
@@ -82,6 +83,9 @@ export default class NavComponentAd extends Component {
             </Route>
             <Route path="/newPlayer">
               <NewPlayer />
+            </Route>
+            <Route path="/reports">
+              <Reports/>
             </Route>
           </Switch>
         </div>

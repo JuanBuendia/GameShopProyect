@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../../css/login.css";
 import axios from "axios";
-import md5 from "md5";
 import Cookies from "universal-cookie";
 import { Link } from "react-router-dom";
 
@@ -35,7 +34,7 @@ class Login extends Component {
         params: {
           role: this.state.form.role,
           username: this.state.form.username,
-          password: md5(this.state.form.password),
+          password: this.state.form.password,
         },
       })
       .then((response) => {
@@ -44,13 +43,13 @@ class Login extends Component {
       .then((response) => {
         if (response.length > 0) {
           var respuesta = response[0];
-          if (respuesta === "Admin") {
+          if (respuesta.role === "Admin") {
             cookies.set("id", respuesta.id, { path: "/" });
             cookies.set("name", respuesta.name, { path: "/" });
             cookies.set("username", respuesta.username, { path: "/" });
             alert(`Bienvenido/a ${respuesta.name}`);
             window.location.href = "homeAd";
-          } else if (respuesta === "Player") {
+          } else {
             cookies.set("id", respuesta.id, { path: "/" });
             cookies.set("name", respuesta.name, { path: "/" });
             cookies.set("username", respuesta.username, { path: "/" });

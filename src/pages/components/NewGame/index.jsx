@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Table, Modal, Row, Col } from "react-bootstrap";
+import { Table, Modal, Row, Col, Container } from "react-bootstrap";
 import { ModalFooter, ModalBody } from "reactstrap";
+import "../../../css/login.css";
 
 const url = "http://localhost:3001/games";
 
@@ -15,6 +16,8 @@ class NewGame extends Component {
       size: "",
       gameType: "",
       img1: "",
+      img2: "",
+      img3: "",
       tipoModal: "",
     },
   };
@@ -55,6 +58,8 @@ class NewGame extends Component {
         size: juegos.size,
         gameType: juegos.gameType,
         img1: juegos.img1,
+        img2: juegos.img2,
+        img3: juegos.img3,
       },
     });
   };
@@ -73,14 +78,17 @@ class NewGame extends Component {
   };
 
   //peticion editar
-  peticionPut=()=>{
-    axios.put(url+"/"+ this.state.form.id, this.state.form).then(response=>{
-      this.HandleModal();
-      this.peticionGet();
-    }).catch((error) => {
-      console.log(error.message);
-    });
-  }
+  peticionPut = () => {
+    axios
+      .put(url + "/" + this.state.form.id, this.state.form)
+      .then((response) => {
+        this.HandleModal();
+        this.peticionGet();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   componentDidMount() {
     this.peticionGet();
@@ -94,7 +102,10 @@ class NewGame extends Component {
         <div className="text-center">
           <button
             className="btn btn-success"
-            onClick={() => {this.setState({form:null, tipoModal: 'insertar'}); this.HandleModal()}}
+            onClick={() => {
+              this.setState({ form: null, tipoModal: "insertar" });
+              this.HandleModal();
+            }}
           >
             <i className="bi bi-plus-circle"></i>
           </button>
@@ -120,11 +131,18 @@ class NewGame extends Component {
                     <td>{juegos.name}</td>
                     <td>{juegos.size}</td>
                     <td>{juegos.gameType}</td>
-                    <td>{juegos.img1}</td>
+                    <td>
+                      <img className="ImgGames me-2" alt="" src={juegos.img1} />
+                      <img className="ImgGames me-2" alt="" src={juegos.img2} />
+                      <img className="ImgGames me-2" alt="" src={juegos.img3} />
+                    </td>
                     <td className="text-center">
                       <button
                         className="btn btn-warning me-2"
-                        onClick={() => {this.seleccionaJuego(juegos); this.HandleModal()}}
+                        onClick={() => {
+                          this.seleccionaJuego(juegos);
+                          this.HandleModal();
+                        }}
                       >
                         <i className="bi bi-pencil-square"></i>
                       </button>
@@ -141,7 +159,7 @@ class NewGame extends Component {
                 <h4>Game</h4>
               </div>
             </ModalBody>
-            <div className="container">
+            <Container>
               <Row>
                 <Col>
                   <label htmlFor="Name">ID</label>
@@ -153,6 +171,8 @@ class NewGame extends Component {
                     onChange={this.handleChange}
                     value={form ? form.id : this.state.data.length + 1}
                   />
+                </Col>
+                <Col>
                   <label htmlFor="Name">Nombre</label>
                   <input
                     type="text"
@@ -161,6 +181,11 @@ class NewGame extends Component {
                     onChange={this.handleChange}
                     value={form ? form.name : ""}
                   />
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col>
                   <label htmlFor="Name">Tamaño</label>
                   <input
                     type="text"
@@ -169,6 +194,8 @@ class NewGame extends Component {
                     onChange={this.handleChange}
                     value={form ? form.size : ""}
                   />
+                </Col>
+                <Col>
                   <label htmlFor="Name">Tipo de juego</label>
                   <input
                     type="text"
@@ -177,7 +204,12 @@ class NewGame extends Component {
                     onChange={this.handleChange}
                     value={form ? form.gameType : ""}
                   />
-                  <label htmlFor="Name">Imagenes</label>
+                </Col>
+              </Row>
+              <br />
+              <Row>
+                <Col>
+                  <label htmlFor="Name">URL Imagen 1</label>
                   <input
                     type="text"
                     name="img1"
@@ -185,15 +217,38 @@ class NewGame extends Component {
                     onChange={this.handleChange}
                     value={form ? form.img1 : ""}
                   />
+                  <br />
+                </Col>
+                <Col>
+                  <label htmlFor="Name">URL Imagen 2</label>
+                  <input
+                    type="text"
+                    name="img2"
+                    className="form-control"
+                    onChange={this.handleChange}
+                    value={form ? form.img2 : ""}
+                  />
+                  <br />
+                </Col>
+                <Col>
+                  <label htmlFor="Name">URL Imagen 3</label>
+                  <input
+                    type="text"
+                    name="img3"
+                    className="form-control"
+                    onChange={this.handleChange}
+                    value={form ? form.img3 : ""}
+                  />
+                  <br />
                 </Col>
               </Row>
-            </div>
+            </Container>
             <ModalFooter>
               {this.state.tipoModal === "insertar" ? (
                 <button
                   className="btn btn-success"
                   onClick={() => {
-                    this.peticionPost()
+                    this.peticionPost();
                   }}
                 >
                   Agregar
@@ -201,9 +256,7 @@ class NewGame extends Component {
               ) : (
                 <button
                   className="btn btn-primary"
-                  onClick={() =>
-                    this.peticionPut()
-                  }
+                  onClick={() => this.peticionPut()}
                 >
                   Actualizar
                 </button>
@@ -211,7 +264,7 @@ class NewGame extends Component {
               <button
                 className="btn btn-danger"
                 onClick={() => {
-                  this.HandleModal()
+                  this.HandleModal();
                 }}
               >
                 Cancelar

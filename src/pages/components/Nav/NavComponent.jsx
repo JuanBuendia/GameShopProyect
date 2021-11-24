@@ -11,8 +11,9 @@ import {
 import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
 import Games from "../Games";
 import Home from "../home";
-import Login from "../../login";
 import Cookies from "universal-cookie";
+import Reports from "../Reports";
+import Library from "../Library";
 
 const cookies = new Cookies();
 
@@ -39,10 +40,10 @@ export default class NavComponent extends Component {
                   style={{ maxHeight: "100px" }}
                   navbarScroll
                 >
-                  <Nav.Link as={Link} to="/gamepass">
+                  <Nav.Link as={Link} to="/library">
                     BIBLIOTECA
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/social">
+                  <Nav.Link as={Link} to="/reports">
                     REPORTES
                   </Nav.Link>
                   <Nav.Link as={Link} to="/games">
@@ -80,8 +81,11 @@ export default class NavComponent extends Component {
             <Route path="/games">
               <Games />
             </Route>
-            <Route path="/login">
-              <Login />
+            <Route path="/reports">
+              <Reports />
+            </Route>
+            <Route path="/library">
+              <Library/>
             </Route>
           </Switch>
         </div>
