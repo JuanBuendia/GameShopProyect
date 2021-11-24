@@ -61,8 +61,8 @@ function Home() {
       <div className="text-center">
         <Row>
           <Col>
-            <Link to="/library">
-              <Button variant="outline-dark">BIBLIOTECA</Button>
+          <Link to="/library">
+            <Button variant="outline-dark">BIBLIOTECA</Button>
             </Link>
           </Col>
         </Row>
@@ -89,8 +89,8 @@ function Home() {
                         Ir a la página del juego
                       </Link>
                     </Button>
-                  </Row>
-                  <Row>
+                    </Row>
+                    <Row>
                     <br />
                     <Button variant="success">Agregar a biblioteca</Button>
                   </Row>
