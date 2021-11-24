@@ -92,7 +92,14 @@ function Home() {
                     </Row>
                     <Row>
                     <br />
-                    <Button variant="success">Agregar a biblioteca</Button>
+                    <Button variant="success">
+                      <Link
+                        to={`/library/${item.id}`}
+                        className="text-white b"
+                      >
+                        Agregar a biblioteca
+                      </Link>                      
+                    </Button>
                   </Row>
                 </Card.Body>
               </Card>

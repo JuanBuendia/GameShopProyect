@@ -24,7 +24,7 @@ function Routes () {
                 <Route exact path="/newPlayer" component={NewPlayer}/>
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/reports" component={Reports}/>
-                <Route exact path="/library" component={Library}/>
+                <Route exact path={"/library/:add"} component={Library}/>
                 <Route exact path="/games" component={Games}/>
                 <Route exact path="/library" component={Library}/>
                 <Route exact path={"/gameSearch/:search"} component={GameSearch}/>
