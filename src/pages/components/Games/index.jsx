@@ -45,11 +45,20 @@ function Games() {
                 <Card.Text>
                   {item.currency} {item.original_price}
                 </Card.Text>
-                <Button variant="dark ">
-                  <Link to={`/gameDetail/${item.id}`} className="text-white b">
-                    Ir a la página del juego
-                  </Link>
-                </Button>
+                <Row>
+                    <Button className="mb-2" variant="dark ">
+                      <Link
+                        to={`/gameDetail/${item.id}`}
+                        className="text-white b"
+                      >
+                        Ir a la página del juego
+                      </Link>
+                    </Button>
+                  </Row>
+                  <Row>
+                    <br />
+                    <Button variant="success">Agregar a biblioteca</Button>
+                  </Row>
               </Card.Body>
             </Card>
           </Col>
