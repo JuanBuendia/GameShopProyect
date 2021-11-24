@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Image, ListGroup } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function GameSearch() {
   const { search } = useParams();
@@ -37,7 +37,7 @@ function GameSearch() {
 
   return (
     <div className="container center">
-      <br/>
+      <br />
       <ListGroup as="ol" numbered className="col-12">
         {listaJuegos.map((item) => (
           <ListGroup.Item
@@ -46,7 +46,11 @@ function GameSearch() {
             key={item.game_id}
           >
             <div className="ms-2 me-auto">
-              <div className="fw-bold">{item.title}</div>
+              <div className="fw-bold">
+                <Link to={`/gameDetail/${item.game_id}`} className="text-white b">
+                  {item.title}
+                </Link>
+              </div>
               {item.currency} {item.search_price}
             </div>
             <Image src={item.image_thumbnail} rounded />
