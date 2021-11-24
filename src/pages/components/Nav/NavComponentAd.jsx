@@ -4,7 +4,6 @@ import {
   Navbar,
   Nav,
   Container,
-  FormControl,
   Form,
   Button,
 } from "react-bootstrap";
@@ -51,12 +50,10 @@ export default class NavComponentAd extends Component {
                   </Nav.Link>
                 </Nav>
                 <Form className="d-flex">
-                  <FormControl
-                  //ENLAZAR CON GAME SEARCH
-                    type="search"
+                  <input
+                    type="text"
                     placeholder="Buscar juegos"
-                    className="me-2"
-                    aria-label="Search"
+                    className="form-control me-2"
                   />
                   <Button
                     variant="outline-info"

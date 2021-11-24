@@ -1,13 +1,6 @@
 import React from "react";
-import { Component, useState } from "react";
-import {
-  Navbar,
-  Nav,
-  Container,
-  FormControl,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Component } from "react";
+import { Navbar, Nav, Container, Form, Button } from "react-bootstrap";
 import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
 import Games from "../Games";
 import Home from "../home";
@@ -25,7 +18,7 @@ export default class NavComponent extends Component {
       value: "",
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleCambio = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -33,13 +26,20 @@ export default class NavComponent extends Component {
     this.setState({ value: event.target.value });
   }
 
+  //capturar lo que digita el usuario
+  handleCambio = async (e) => {
+    e.persist();
+    await this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value,
+      },
+    });
+    console.log(this.state.form);
+  };
+
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
-    <Route
-      exact
-      path={`/gameDetail/${this.state.value}`}
-      component={GameSearch}
-    />;
+    window.location.href = `/gameSearch/${this.state.value}`;
     event.preventDefault();
   }
 
@@ -77,14 +77,12 @@ export default class NavComponent extends Component {
                   </Nav.Link>
                 </Nav>
                 <Form className="d-flex" onSubmit={this.handleSubmit}>
-                    <Form.Control
-                    onChangeCapture
-                    type="search"
+                  <input
+                    //ENLAZAR CON GAME SEARCH
+                    type="text"
                     placeholder="Buscar juegos"
-                    className="me-2"
-                    aria-label="Search"
-                    value={this.state.value}
-                    onChange={this.handleChange}
+                    className="form-control me-2"
+                    onChange={this.handleCambio}
                   />
                   <Button
                     type="submit"
@@ -117,7 +115,10 @@ export default class NavComponent extends Component {
               <Reports />
             </Route>
             <Route path="/library">
-              <Library/>
+              <Library />
+            </Route>
+            <Route path="/gameSearch">
+              <GameSearch />
             </Route>
           </Switch>
         </div>

@@ -10,7 +10,7 @@ function GameSearch() {
   var options = {
     method: "GET",
     url: "https://steam-game-search-and-details.p.rapidapi.com/game_search/search_like/title/",
-    params: { search_value: `${ search }` },
+    params: { search_value: `${search}` },
     headers: {
       "x-rapidapi-host": "steam-game-search-and-details.p.rapidapi.com",
       "x-rapidapi-key": "f60d33d507mshe74872ebd7754f4p11e444jsn30f38184cbe3",
@@ -32,25 +32,28 @@ function GameSearch() {
 
   useEffect(() => {
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <ListGroup as="ol" numbered className = "col-8">
-      {listaJuegos.map((item) => (
-        <ListGroup.Item
-          as="li"
-          className="d-flex justify-content-between align-items-start bg-dark text-white"
-          key={item.game_id}
-        >
-          <div className="ms-2 me-auto">
-            <div className="fw-bold">{item.title}</div>
-            {item.currency} {item.search_price}
-          </div>
-          <Image src={item.image_thumbnail} rounded />
-        </ListGroup.Item>
-      ))}
-    </ListGroup>
+    <div className="container center">
+      <br/>
+      <ListGroup as="ol" numbered className="col-12">
+        {listaJuegos.map((item) => (
+          <ListGroup.Item
+            as="li"
+            className="d-flex justify-content-between align-items-start bg-dark text-white"
+            key={item.game_id}
+          >
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">{item.title}</div>
+              {item.currency} {item.search_price}
+            </div>
+            <Image src={item.image_thumbnail} rounded />
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
+    </div>
   );
 }
 
