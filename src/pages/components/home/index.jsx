@@ -78,7 +78,7 @@ function Home() {
                   <Card.Text>
                     {item.currency} {item.original_price}
                   </Card.Text>
-                  <Button variant="dark">
+                  <Button variant="dark ">
                     <Link to={`/gameDetail/${item.id}`} className="text-white b">
                       Ir a la página del juego
                     </Link>

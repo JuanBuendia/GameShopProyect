@@ -8,6 +8,7 @@ import GameSearch from "./pages/components/GamesSearch"
 import GameDetail from "./pages/components/GameDetail"
 import NavComponentAd from "./pages/components/Nav/NavComponentAd";
 import NewGame from "./pages/components/NewGame";
+import Library from "./pages/components/Library";
 
 function Routes () {
     return (
@@ -18,6 +19,7 @@ function Routes () {
                 <Route exact path="/homeAd" component={NavComponentAd}/>
                 <Route exact path="/new" component={NewGame}/>
                 <Route exact path="/games" component={Games}/>
+                <Route exact path="/library" component={Library}/>
                 <Route exact path="/gameSearch" component={GameSearch}/>
                 <Route exact path= {"/gameDetail/:id"} component={GameDetail}/>
             </Switch>
