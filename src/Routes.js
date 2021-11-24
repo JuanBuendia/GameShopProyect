@@ -9,6 +9,7 @@ import GameDetail from "./pages/components/GameDetail"
 import NavComponentAd from "./pages/components/Nav/NavComponentAd";
 import NewGame from "./pages/components/NewGame";
 import NewPlayer from "./pages/components/NewPlayer";
+import Register from "./pages/components/Register";
 
 function Routes () {
     return (
@@ -19,6 +20,7 @@ function Routes () {
                 <Route exact path="/homeAd" component={NavComponentAd}/>
                 <Route exact path="/newGame" component={NewGame}/>
                 <Route exact path="/newPlayer" component={NewPlayer}/>
+                <Route exact path="/register" component={Register}/>
                 <Route exact path="/games" component={Games}/>
                 <Route exact path="/gameSearch" component={GameSearch}/>
                 <Route exact path= {"/gameDetail/:id"} component={GameDetail}/>

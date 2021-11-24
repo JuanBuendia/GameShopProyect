@@ -3,9 +3,15 @@
 }
 .card{
     width: 550px;
+    height: 500px;
     border-radius: 3%;
 }
 
+.cardd2{
+    width: 550px;
+    height: 670px;
+    border-radius: 3%;
+}
 .sidenav {
     height: 100%;
     background-image: url(../css/img/imglogin.jpg) ;

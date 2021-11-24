@@ -2,8 +2,11 @@
   "users": [
     {
       "id": 1,
-      "role": "Admin",
+      "role": "Player",
       "name": "Dahianna Cabrera",
+      "documentType": "CC",
+      "document": "1053554415",
+      "card": "111212121212121",
       "username": "dahianna",
       "password": "827ccb0eea8a706c4c34a16891f84e7b"
     },
@@ -11,6 +14,9 @@
       "id": 2,
       "role": "Admin",
       "name": "Juan David Buendía",
+      "documentType": "CC",
+      "document": "1053554415",
+      "card": "111212121212121",
       "username": "juan",
       "password": "827ccb0eea8a706c4c34a16891f84e7b"
     },
@@ -18,6 +24,19 @@
       "id": 3,
       "role": "Player",
       "name": "Pepito",
+      "documentType": "CC",
+      "document": "1053554415",
+      "card": "111212121212121",
+      "username": "dajuu",
+      "password": "12345"
+    },
+    {
+      "id": 4,
+      "role": "Player",
+      "name": "Erika Rincón",
+      "documentType": "CC",
+      "document": "1111111",
+      "card": "1111111",
       "username": "daju",
       "password": "12345"
     }

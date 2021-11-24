@@ -3,6 +3,7 @@ import "../../css/login.css";
 import axios from "axios";
 import md5 from "md5";
 import Cookies from "universal-cookie";
+import { Link } from "react-router-dom";
 
 const baseUrl = "http://localhost:3001/users";
 const cookies = new Cookies();
@@ -49,7 +50,7 @@ class Login extends Component {
             cookies.set("username", respuesta.username, { path: "/" });
             alert(`Bienvenido/a ${respuesta.name}`);
             window.location.href = "homeAd";
-          } else {
+          } else if (respuesta === "Player") {
             cookies.set("id", respuesta.id, { path: "/" });
             cookies.set("name", respuesta.name, { path: "/" });
             cookies.set("username", respuesta.username, { path: "/" });
@@ -79,10 +80,9 @@ class Login extends Component {
                       <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                         <div className="card shadow-2-strong">
                           <div className="card-body p-5 text-center">
-                            <h3 className="mb-5">Sign in</h3>
-
-                            <div className="form-outline mb-4">
-                              <select name="role" className="form-control form-control-lg"
+                            <h3 className="mb-2">Sign in</h3>
+                            <div className="form-outline mb-2">
+                              <select name="role" className="form-control"
                                 onChange={this.handleChange}>
                                 <option value="Admin">Administrador</option>
                                 <option value="Player">Jugador</option>
@@ -90,22 +90,22 @@ class Login extends Component {
                               <label className="form-label">Rol</label>
                             </div>
 
-                            <div className="form-outline mb-4">
+                            <div className="form-outline mb-2">
                               <input
                                 type="text"
                                 id="username"
-                                className="form-control form-control-lg"
+                                className="form-control"
                                 name="username"
                                 onChange={this.handleChange}
                               />
                               <label className="form-label">User</label>
                             </div>
 
-                            <div className="form-outline mb-4">
+                            <div className="form-outline mb-2">
                               <input
                                 type="password"
                                 id="password"
-                                className="form-control form-control-lg"
+                                className="form-control"
                                 name="password"
                                 onChange={this.handleChange}
                               />
@@ -113,12 +113,13 @@ class Login extends Component {
                             </div>
 
                             <button
-                              className="btn btn-primary btn-lg btn-block"
+                              className="btn btn-primary btn-md btn-block me-2"
                               type="submit"
                               onClick={() => this.iniciarSesion()}
                             >
                               Login
                             </button>
+                            <Link className="btn btn-success" to="/register" >Register</Link>
                             <hr />
                           </div>
                         </div>
