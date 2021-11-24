@@ -27,7 +27,7 @@ function Routes () {
                 <Route exact path="/library" component={Library}/>
                 <Route exact path="/games" component={Games}/>
                 <Route exact path="/library" component={Library}/>
-                <Route exact path="/gameSearch" component={GameSearch}/>
+                <Route exact path={"/gameSearch/:search"} component={GameSearch}/>
                 <Route exact path= {"/gameDetail/:id"} component={GameDetail}/>
             </Switch>
         </BrowserRouter>

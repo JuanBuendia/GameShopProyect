@@ -1,5 +1,5 @@
 import React from "react";
-import { Component } from "react";
+import { Component, useState } from "react";
 import {
   Navbar,
   Nav,
@@ -14,16 +14,42 @@ import Home from "../home";
 import Cookies from "universal-cookie";
 import Reports from "../Reports";
 import Library from "../Library";
+import GameSearch from "../GamesSearch";
 
 const cookies = new Cookies();
 
 export default class NavComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "",
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.value);
+    <Route
+      exact
+      path={`/gameDetail/${this.state.value}`}
+      component={GameSearch}
+    />;
+    event.preventDefault();
+  }
+
   cerrarSesion = () => {
     cookies.remove("id", { path: "/" });
     cookies.remove("name", { path: "/" });
     cookies.remove("username", { path: "/" });
     window.location.href = "./";
   };
+
   render() {
     return (
       <BrowserRouter>
@@ -50,23 +76,29 @@ export default class NavComponent extends Component {
                     STORE
                   </Nav.Link>
                 </Nav>
-                <Form className="d-flex">
-                  <FormControl
-                  //ENLAZAR CON GAME SEARCH
+                <Form className="d-flex" onSubmit={this.handleSubmit}>
+                    <Form.Control
+                    onChangeCapture
                     type="search"
                     placeholder="Buscar juegos"
                     className="me-2"
                     aria-label="Search"
+                    value={this.state.value}
+                    onChange={this.handleChange}
                   />
                   <Button
+                    type="submit"
                     variant="outline-info"
                     className="me-2"
-                  ><i class="bi bi-search"></i>
+                    onClick={this.handleSubmit}
+                  >
+                    <i class="bi bi-search"></i>
                   </Button>
                   <Button
                     variant="outline-warning"
                     onClick={() => this.cerrarSesion()}
-                  ><i class="bi bi-box-arrow-in-right"></i>
+                  >
+                    <i class="bi bi-box-arrow-in-right"></i>
                   </Button>
                 </Form>
               </Navbar.Collapse>
